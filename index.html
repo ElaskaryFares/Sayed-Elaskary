@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#f7f4ee">
+<title>Sayed Elaskary</title>
+<style>
+:root{
+  --bg:#f7f4ee; --card:#ffffff; --line:#ebe5d9; --ink:#1d2433; --muted:#6c7283;
+  --gold:#b88a3a; --gold-soft:#f6ecd6; --navy:#27345f; --navy-soft:#e8ebf6;
+  --wa:#1fa855; --wa-soft:#e3f5ea; --red:#d93a2f;
+  --font-body:"Segoe UI",Tahoma,Arial,sans-serif;
+  --font-title:"Trebuchet MS","Segoe UI",sans-serif;
+  --shadow:0 1px 2px rgba(29,36,51,.04),0 8px 24px rgba(29,36,51,.07);
+}
+*{box-sizing:border-box;margin:0;-webkit-tap-highlight-color:transparent}
+html,body{height:100%}
+body{
+  background:
+    radial-gradient(70% 38% at 85% -5%,#f3e4c0 0%,transparent 70%),
+    radial-gradient(60% 34% at 0% 0%,#dfe6f7 0%,transparent 70%),
+    var(--bg) fixed;
+  color:var(--ink);
+  font-family:var(--font-body);
+  display:flex;justify-content:center;
+  padding:max(24px,env(safe-area-inset-top)) max(20px,env(safe-area-inset-right)) max(24px,env(safe-area-inset-bottom)) max(20px,env(safe-area-inset-left));
+}
+main{width:100%;max-width:420px;margin:auto;display:flex;flex-direction:column;align-items:center;text-align:center}
+
+.avatar{
+  width:136px;height:136px;border-radius:50%;padding:4px;
+  background:conic-gradient(from 200deg,#e6c883,#b88a3a,#f3e2b3,#b88a3a,#e6c883);
+  box-shadow:0 14px 36px rgba(184,138,58,.28);
+  animation:pop .8s cubic-bezier(.2,.8,.2,1) both;
+}
+.avatar div{
+  width:100%;height:100%;border-radius:50%;border:4px solid #fff;
+  background:var(--gold-soft) center/cover no-repeat;
+  display:grid;place-items:center;
+  font:600 40px var(--font-title);letter-spacing:.04em;color:var(--gold);
+}
+h1{
+  margin-top:22px;font:700 29px/1.1 var(--font-title);letter-spacing:.14em;text-transform:uppercase;color:var(--ink);
+  animation:rise .7s .25s cubic-bezier(.2,.8,.2,1) both;
+}
+.name-alt,
+.bio-alt{
+  font-size:15px;line-height:1.5;letter-spacing:.04em;color:var(--muted);
+  animation:rise .7s .35s cubic-bezier(.2,.8,.2,1) both;
+}
+.name-alt{margin-top:8px;font-weight:700}
+.bio-alt{margin-top:6px}
+.rule{width:36px;height:2px;border-radius:2px;background:var(--gold);margin:14px 0 12px;animation:rise .7s .3s both}
+.bio{color:var(--muted);font-size:15px;line-height:1.5;max-width:300px;animation:rise .7s .35s cubic-bezier(.2,.8,.2,1) both}
+
+.actions{width:100%;margin-top:28px;display:grid;gap:12px}
+.btn{
+  position:relative;display:flex;align-items:center;gap:16px;width:100%;min-height:66px;padding:0 18px 0 12px;
+  background:var(--card);border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow);
+  color:var(--ink);font:600 17px/1.2 var(--font-body);text-decoration:none;text-align:left;cursor:pointer;
+  transition:transform .22s ease, box-shadow .22s ease, border-color .22s ease, background-color .22s ease;
+  animation:rise .6s cubic-bezier(.2,.8,.2,1) both;
+}
+.btn:nth-child(1){animation-delay:.45s}.btn:nth-child(2){animation-delay:.55s}.btn:nth-child(3){animation-delay:.65s}
+.btn::after{
+  content:"";margin-left:auto;width:8px;height:8px;border-right:2px solid #c3bcae;border-top:2px solid #c3bcae;transform:rotate(45deg);flex:none;transition:transform .2s ease, border-color .2s ease;
+}
+.ico{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;flex:none;transition:transform .2s ease, background-color .2s ease;}
+.ico svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.call .ico{background:var(--navy-soft);color:var(--navy)}
+.wa .ico{background:var(--wa-soft);color:var(--wa)}
+.save .ico{background:var(--gold-soft);color:var(--gold)}
+.lang-toggle{
+  margin:0 auto 16px;
+  margin-right: 0px;
+  border:1px solid var(--line);background:var(--card);color:var(--ink);
+  border-radius:1500px;padding:18px 18px;font:600 14px/1 var(--font-body);cursor:pointer;box-shadow:var(--shadow);
+  transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease, background-color .2s ease;
+}
+.lang-toggle:hover{
+  transform:translateY(-4px);
+  transition:transform .2s cubic-bezier(.2,.8,.2,1),
+  border-color:#d9cdb3;box-shadow:0 6px 16px rgba(29,36,51,.08);
+}
+.lang-toggle:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+@media (hover:hover){
+  .btn:hover{border-color:#d9cdb3;box-shadow:0 2px 4px rgba(29,36,51,.05),0 12px 28px rgba(29,36,51,.1);transform:translateY(-2px)}
+  .btn:hover .ico{transform:scale(1.06)}
+  .btn:hover::after{transform:translateX(2px) rotate(45deg)}
+}
+.btn:active{transform:scale(.97)}
+.btn:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+
+.sos{margin-top:24px;width:100%;animation:rise .6s .8s cubic-bezier(.2,.8,.2,1) both}
+.sos-label{display:flex;align-items:center;gap:12px;color:var(--muted);font-size:13px;margin-bottom:12px}
+.sos-label::before,.sos-label::after{content:"";flex:1;height:1px;background:var(--line)}
+.btn.emg{
+  background:linear-gradient(135deg,#e5483d,#bb2a20);border:0;min-height:74px;color:#fff;
+  box-shadow:0 12px 30px rgba(217,58,47,.32);animation:none;
+}
+.btn.emg::after{border-color:rgba(255,255,255,.7)}
+.btn.emg .ico{background:rgba(255,255,255,.2);font-size:24px;position:relative}
+.btn.emg .ico::before{
+  content:"";position:absolute;inset:0;border-radius:14px;border:2px solid rgba(255,255,255,.55);
+  animation:ring 2.4s ease-out infinite;
+}
+.emg small{display:block;font-weight:400;font-size:13px;opacity:.9;margin-top:2px}
+.emg b{font-weight:700;font-size:18px}
+
+@keyframes pop{from{opacity:0;transform:scale(.88)}to{opacity:1;transform:none}}
+@keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@keyframes ring{0%{opacity:.8;transform:scale(1)}100%{opacity:0;transform:scale(1.45)}}
+@media (max-height:720px){.avatar{width:108px;height:108px}.actions{margin-top:18px}h1{margin-top:16px}.sos{margin-top:16px}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<main>
+  <button class="lang-toggle" id="langToggle" type="button" aria-label="Switch language">AR</button>
+
+  <div class="avatar"><div id="photo"></div></div>
+  <h1 id="name"></h1>
+  <div class="rule"></div>
+  <p class="bio" id="bio"></p>
+
+  <nav class="actions" aria-label="Contact actions">
+    <a class="btn call" id="call" href="#">
+      <span class="ico"><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.500 1.500a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg></span><span id="callText">Call Me</span>
+    </a>
+    <a class="btn wa" id="wa" href="#" target="_blank" rel="noopener">
+      <span class="ico"><svg viewBox="0 0 24 24"><path d="M3 21l1.700-5A8.500 8.500 0 1 1 8 19.300L3 21z"/><path d="M9 9.500c0 3 2.500 5.500 5.500 5.500l1-1.500-2-1-1 .8a4 4 0 0 1-1.800-1.800l.8-1-1-2L9 9.500z"/></svg></span>WhatsApp
+    </a>
+    <button class="btn save" id="save" type="button">
+      <span class="ico"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="4"/><path d="M2 21a7 7 0 0 1 14 0M19 8v6M16 11h6"/></svg></span><span id="saveText">Save Contact</span>
+    </button>
+  </nav>
+
+</main>
+
+<script>
+/* ============ EDIT YOUR DETAILS HERE ============ */
+const contactInfo = {
+  en: {
+    name: "Sayed Elaskary",
+    nameA: "Sayed Elaskary",
+    phone: "+201000444520",
+    whatsapp: "+201000444520",
+    bio: "Director of Al-Zohour Island",
+    bioA: "Director of Al-Zohour Island"
+  },
+  ar: {
+    name: "سيد العسكري",
+    nameA: "سيد العسكري",
+    phone: "+201000444520",
+    whatsapp: "+201000444520",
+    bio: "مدير جزيرة الزهور",
+    bioA: "مدير جزيرة الزهور"
+  },
+  image: "image.png"
+};
+/* ================================================== */
+
+const digits = s => String(s).replace(/\D/g, "");
+const $ = id => document.getElementById(id);
+let currentLang = "en";
+
+function applyLanguage(lang) {
+  const data = contactInfo[lang];
+  currentLang = lang;
+
+  document.title = data.name;
+  $("name").textContent = data.name;
+  $("bio").textContent = data.bio;
+  $("call").href = "tel:+" + digits(data.phone);
+  $("wa").href = "https://wa.me/" + digits(data.whatsapp);
+  $("callText").textContent = lang === "en" ? "Call Me" : "اتصل بي";
+  $("saveText").textContent = lang === "en" ? "Save Contact" : "حفظ الاتصال";
+  $("langToggle").textContent = lang === "en" ? "AR" : "EN";
+  $("langToggle").setAttribute("aria-label", lang === "en" ? "Switch to Arabic" : "Switch to English");
+
+  const photo = $("photo");
+  if (contactInfo.image) photo.style.backgroundImage = "url('" + contactInfo.image + "')";
+  else photo.textContent = data.name.split(/\s+/).map(w => w[0]).join("").slice(0, 2).toUpperCase();
+}
+
+applyLanguage(currentLang);
+
+$("langToggle").addEventListener("click", () => {
+  applyLanguage(currentLang === "en" ? "ar" : "en");
+});
+
+$("save").addEventListener("click", () => {
+  const data = contactInfo[currentLang];
+  const parts = data.name.trim().split(/\s+/);
+  const last = parts.length > 1 ? parts.pop() : "";
+  const first = parts.join(" ");
+  const vcf = [
+    "BEGIN:VCARD",
+    "VERSION:3.0",
+    "N:" + last + ";" + first + ";;;",
+    "FN;CHARSET=UTF-8:" + data.name,
+    "ORG;CHARSET=UTF-8:" + data.bio,
+    "TEL;TYPE=CELL,VOICE:+" + digits(data.phone),
+    "TEL;TYPE=CELL,WHATSAPP:+" + digits(data.whatsapp),
+    "END:VCARD"
+  ].join("\r\n");
+  const blob = new Blob([vcf], { type: "text/vcard;charset=utf-8" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = data.name.replace(/\s+/g, "_") + ".vcf";
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 4000);
+});
+</script>
+</body>
+</html>
